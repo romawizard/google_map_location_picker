@@ -20,6 +20,7 @@ class LocationResult {
   String administrativeAreaLevel2;
   String administrativeAreaLevel1;
   String country;
+  String postalCode;
 
   LocationResult(
       {this.latLng,
@@ -30,10 +31,11 @@ class LocationResult {
       this.locality,
       this.administrativeAreaLevel2,
       this.administrativeAreaLevel1,
-      this.country});
+      this.country,
+      this.postalCode});
 
   @override
   String toString() {
-    return 'LocationResult{address: $address, latLng: $latLng, placeId: $placeId, streetNumber: $streetNumber, route: $route, locality: $locality, administrativeAreaLevel2: $administrativeAreaLevel2, administrativeAreaLevel1: $administrativeAreaLevel1, country: $country}';
+    return 'LocationResult{address: $address, latLng: $latLng, placeId: $placeId, streetNumber: $streetNumber, route: $route, locality: $locality, administrativeAreaLevel2: $administrativeAreaLevel2, administrativeAreaLevel1: $administrativeAreaLevel1, country: $country, postalCode: $postalCode}';
   }
 }

@@ -87,6 +87,8 @@ class MapPickerState extends State<MapPicker> {
   String _administrativeAreaLevel2;
   String _administrativeAreaLevel1;
   String _country;
+  String _postalCode;
+
   void _onToggleMapTypePressed() {
     final MapType nextType =
         MapType.values[(_currentMapType.index + 1) % MapType.values.length];
@@ -250,6 +252,7 @@ class MapPickerState extends State<MapPicker> {
                         _administrativeAreaLevel1 =
                             data["administrativeAreaLevel1"];
                         _country = data["country"];
+                        _postalCode = data["postalCode"];
                         return Text(
                           _address ??
                               S.of(context)?.unnamedPlace ??
@@ -273,6 +276,7 @@ class MapPickerState extends State<MapPicker> {
                           administrativeAreaLevel2: _administrativeAreaLevel2,
                           administrativeAreaLevel1: _administrativeAreaLevel1,
                           country: _country,
+                          postalCode: _postalCode,
                         )
                       });
                     },
@@ -312,7 +316,8 @@ class MapPickerState extends State<MapPicker> {
           entry['types'].contains('administrative_area_level_1'))['long_name'];
       String country = addressComponents.firstWhere(
           (entry) => entry['types'].contains('country'))['long_name'];
-
+      String postalCode = addressComponents.firstWhere(
+          (entry) => entry['types'].contains('postal_code'))['long_name'];
       return {
         "placeId": response['results'][0]['place_id'],
         "address": response['results'][0]['formatted_address'],
@@ -322,6 +327,7 @@ class MapPickerState extends State<MapPicker> {
         "administrativeAreaLevel2": administrativeAreaLevel2 ?? '',
         "administrativeAreaLevel1": administrativeAreaLevel1 ?? '',
         "country": country ?? '',
+        "postalCode": postalCode ?? '',
       };
     } catch (e) {
       print(e);
