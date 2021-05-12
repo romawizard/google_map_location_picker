@@ -304,20 +304,31 @@ class MapPickerState extends State<MapPicker> {
 
       List<dynamic> addressComponents =
           response['results'][0]['address_components'];
-      String streetNumber = addressComponents.firstWhere(
-          (entry) => entry['types'].contains('street_number'))['long_name'];
-      String route = addressComponents
-          .firstWhere((entry) => entry['types'].contains('route'))['long_name'];
-      String locality = addressComponents.firstWhere(
-          (entry) => entry['types'].contains('locality'))['long_name'];
-      String administrativeAreaLevel2 = addressComponents.firstWhere((entry) =>
-          entry['types'].contains('administrative_area_level_2'))['long_name'];
-      String administrativeAreaLevel1 = addressComponents.firstWhere((entry) =>
-          entry['types'].contains('administrative_area_level_1'))['long_name'];
-      String country = addressComponents.firstWhere(
-          (entry) => entry['types'].contains('country'))['long_name'];
-      String postalCode = addressComponents.firstWhere(
-          (entry) => entry['types'].contains('postal_code'))['long_name'];
+      String streetNumber;
+      String route;
+      String locality;
+      String administrativeAreaLevel2;
+      String administrativeAreaLevel1;
+      String country;
+      String postalCode;
+      if (addressComponents != null) {
+        streetNumber = addressComponents.firstWhere(
+            (entry) => entry['types'].contains('street_number'))['long_name'];
+        route = addressComponents.firstWhere(
+            (entry) => entry['types'].contains('route'))['long_name'];
+        locality = addressComponents.firstWhere(
+            (entry) => entry['types'].contains('locality'))['long_name'];
+        administrativeAreaLevel2 = addressComponents.firstWhere((entry) =>
+            entry['types']
+                .contains('administrative_area_level_2'))['long_name'];
+        administrativeAreaLevel1 = addressComponents.firstWhere((entry) =>
+            entry['types']
+                .contains('administrative_area_level_1'))['long_name'];
+        country = addressComponents.firstWhere(
+            (entry) => entry['types'].contains('country'))['long_name'];
+        postalCode = addressComponents.firstWhere(
+            (entry) => entry['types'].contains('postal_code'))['long_name'];
+      }
       return {
         "placeId": response['results'][0]['place_id'],
         "address": response['results'][0]['formatted_address'],
