@@ -27,6 +27,8 @@ class SearchInputState extends State<SearchInput> {
 
   Timer debouncer;
 
+  String lastEntry;
+
   bool hasSearchEntry = false;
 
   @override
@@ -44,8 +46,13 @@ class SearchInputState extends State<SearchInput> {
   }
 
   void onSearchInputChange() {
+    if (editController.text == lastEntry) {
+      return;
+    }
+
     if (editController.text.isEmpty) {
       debouncer?.cancel();
+      lastEntry = editController.text;
       widget.onSearchInput(editController.text);
       return;
     }
@@ -55,6 +62,7 @@ class SearchInputState extends State<SearchInput> {
     }
 
     debouncer = Timer(Duration(milliseconds: 500), () {
+      lastEntry = editController.text;
       widget.onSearchInput(editController.text);
     });
   }
