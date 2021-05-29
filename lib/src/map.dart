@@ -313,21 +313,26 @@ class MapPickerState extends State<MapPicker> {
       String postalCode;
       if (addressComponents != null) {
         streetNumber = addressComponents.firstWhere(
-            (entry) => entry['types'].contains('street_number'))['long_name'];
+            (entry) => entry['types'].contains('street_number'),
+            orElse: () => {})['long_name'];
         route = addressComponents.firstWhere(
-            (entry) => entry['types'].contains('route'))['long_name'];
+            (entry) => entry['types'].contains('route'),
+            orElse: () => {})['long_name'];
         locality = addressComponents.firstWhere(
-            (entry) => entry['types'].contains('locality'))['long_name'];
-        administrativeAreaLevel2 = addressComponents.firstWhere((entry) =>
-            entry['types']
-                .contains('administrative_area_level_2'))['long_name'];
-        administrativeAreaLevel1 = addressComponents.firstWhere((entry) =>
-            entry['types']
-                .contains('administrative_area_level_1'))['long_name'];
+            (entry) => entry['types'].contains('locality'),
+            orElse: () => {})['long_name'];
+        administrativeAreaLevel2 = addressComponents.firstWhere(
+            (entry) => entry['types'].contains('administrative_area_level_2'),
+            orElse: () => {})['long_name'];
+        administrativeAreaLevel1 = addressComponents.firstWhere(
+            (entry) => entry['types'].contains('administrative_area_level_1'),
+            orElse: () => {})['long_name'];
         country = addressComponents.firstWhere(
-            (entry) => entry['types'].contains('country'))['long_name'];
+            (entry) => entry['types'].contains('country'),
+            orElse: () => {})['long_name'];
         postalCode = addressComponents.firstWhere(
-            (entry) => entry['types'].contains('postal_code'))['long_name'];
+            (entry) => entry['types'].contains('postal_code'),
+            orElse: () => {})['long_name'];
       }
       return {
         "placeId": response['results'][0]['place_id'],
