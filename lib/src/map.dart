@@ -201,7 +201,7 @@ class MapPickerState extends State<MapPicker> {
 //              clearOverlay();
 //            },
             mapType: _currentMapType,
-            myLocationEnabled: true,
+            myLocationEnabled: false,
           ),
           _MapFabs(
             myLocationButtonEnabled: widget.myLocationButtonEnabled,
