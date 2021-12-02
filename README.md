@@ -1,9 +1,5 @@
 # google_map_location_picker [![Pub](https://img.shields.io/pub/v/google_map_location_picker.svg)](https://pub.dev/packages/google_map_location_picker)
 
-Update by MG :
-- Compatibility with Geolocator
-- Use of Google map geolocator Api json field address_component
-
 Location picker using the official [google_maps_flutter](https://pub.dev/packages/google_maps_flutter).
 
 I made This plugin because google deprecated [Place Picker](https://developers.google.com/places/android-sdk/placepicker).
